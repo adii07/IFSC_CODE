@@ -3,21 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".ui.home.HomeFragment">
 
     <EditText
         android:id="@+id/IFSC_code_TXT"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
+        android:gravity="center"
         android:hint="IFSC Code"
         android:inputType="textPersonName"
         android:outlineAmbientShadowColor="#686868"
         android:textColor="@color/black"
         android:textColorHint="#686868"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -25,12 +28,15 @@
         android:id="@+id/Submit_BTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#dd2c00"
-        android:text="Submit"
+        android:text="Search"
         android:textColor="@color/white"
-        app:layout_constraintStart_toEndOf="@+id/IFSC_code_TXT"
-        app:layout_constraintTop_toTopOf="@+id/IFSC_code_TXT" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IFSC_code_TXT" />
 
     <TextView
         android:id="@+id/bank_name"
@@ -40,7 +46,7 @@
         android:text="Bank Name"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/IFSC_code_TXT" />
 
@@ -52,7 +58,7 @@
         android:text="IFSC Code"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/bank_name"
         app:layout_constraintTop_toBottomOf="@+id/bank_name" />
 
@@ -64,7 +70,7 @@
         android:text="Branch Name"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/IFSC"
         app:layout_constraintTop_toBottomOf="@+id/IFSC" />
 
@@ -76,7 +82,7 @@
         android:text="Address"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/branch"
         app:layout_constraintTop_toBottomOf="@+id/branch" />
 
@@ -88,7 +94,7 @@
         android:text="Contact"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/address"
         app:layout_constraintTop_toBottomOf="@+id/address" />
 
@@ -100,7 +106,7 @@
         android:text="City"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/contact_number"
         app:layout_constraintTop_toBottomOf="@+id/contact_number" />
 
@@ -112,7 +118,7 @@
         android:text="RTGS"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/city"
         app:layout_constraintTop_toBottomOf="@+id/city" />
 
@@ -124,7 +130,7 @@
         android:text="District"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/rtgs"
         app:layout_constraintTop_toBottomOf="@+id/rtgs" />
 
@@ -136,7 +142,10 @@
         android:text="State"
         android:textColor="@color/black"
         android:textSize="16sp"
-        android:visibility="visible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="@+id/district"
         app:layout_constraintTop_toBottomOf="@+id/district" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+    

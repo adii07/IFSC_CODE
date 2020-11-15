@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="3dp">
+
+    <TextView
+        android:id="@+id/search_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="IFSC CODE"
+        android:textSize="16dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/BankName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Bank Name"
+        android:textAllCaps="true"
+        android:textSize="14sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/search_code"
+        app:layout_constraintTop_toBottomOf="@+id/search_code" />
+
+    <TextView
+        android:id="@+id/BankAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Address"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/BankName"
+        app:layout_constraintTop_toBottomOf="@+id/BankName" />
+
+    <TextView
+        android:id="@+id/BankBranch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Branch"
+        app:layout_constraintStart_toStartOf="@+id/BankAddress"
+        app:layout_constraintTop_toBottomOf="@+id/BankAddress" />
+
+    <TextView
+        android:id="@+id/RTGS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="RTGS"
+        app:layout_constraintStart_toStartOf="@+id/BankBranch"
+        app:layout_constraintTop_toBottomOf="@+id/BankBranch" />
+
+    <TextView
+        android:id="@+id/BankContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/RTGS"
+        app:layout_constraintTop_toBottomOf="@+id/RTGS" />
+
+    <ImageView
+        android:id="@+id/share_option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/share_medium" />
+</androidx.constraintlayout.widget.ConstraintLayout>
