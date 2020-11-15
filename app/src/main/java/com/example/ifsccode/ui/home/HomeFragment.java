@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
     private String url,code,at;
     private TextView BANK_NAME,IFSC_CODE,BRANCH_NAME,ADDRESS,CONTACT_NO,CITY,RTGS,DISTRICT,STATE;
     private static final String error_message="Invalid IFSC code";
-    private ConstraintLayout bankDetails;
+    private ConstraintLayout bankDetails,invalidMessage;
    // private ProgressDialog pd;
 
 
@@ -121,7 +121,7 @@ public class HomeFragment extends Fragment {
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                ifsc.setText(error_message);
+                ifsc.setText("Invalid IFSC Code");
                 Helper.Log("error message",error.toString());
             }
         });

@@ -8,6 +8,12 @@
     android:orientation="vertical"
     >
 
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/bank"
+        android:layout_marginTop="16sp"
+        android:layout_gravity="center"/>
     <EditText
         android:id="@+id/IFSC_code_TXT"
         android:layout_width="match_parent"
@@ -45,6 +51,9 @@
     <include
         android:id="@+id/details_bank"
         layout="@layout/bank_details"
+        android:visibility="gone"
         tools:visibility="gone" />
+
+
 
 </androidx.appcompat.widget.LinearLayoutCompat>
