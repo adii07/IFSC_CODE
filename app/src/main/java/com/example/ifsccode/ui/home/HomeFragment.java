@@ -4,17 +4,21 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.LinearLayoutCompat;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -46,9 +50,10 @@ public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel;
     private Button submit;
     private EditText ifsc;
-    private String url,code;
+    private String url,code,at;
     private TextView BANK_NAME,IFSC_CODE,BRANCH_NAME,ADDRESS,CONTACT_NO,CITY,RTGS,DISTRICT,STATE;
     private static final String error_message="Invalid IFSC code";
+    private ConstraintLayout bankDetails;
    // private ProgressDialog pd;
 
 
@@ -58,17 +63,18 @@ public class HomeFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
         submit=root.findViewById(R.id.Submit_BTN);
         ifsc=root.findViewById(R.id.IFSC_code_TXT);
-        BANK_NAME=root.findViewById(R.id.bank_name);
-        IFSC_CODE=root.findViewById(R.id.IFSC);
-        BRANCH_NAME=root.findViewById(R.id.branch);
-        ADDRESS=root.findViewById(R.id.address);
-        CONTACT_NO=root.findViewById(R.id.contact_number);
-        CITY=root.findViewById(R.id.city);
-        RTGS=root.findViewById(R.id.rtgs);
-        DISTRICT=root.findViewById(R.id.district);
-        STATE=root.findViewById(R.id.state);
+        BANK_NAME=root.findViewById(R.id.BankName);
+        IFSC_CODE=root.findViewById(R.id.search_code);
+        BRANCH_NAME=root.findViewById(R.id.BankBranch);
+        ADDRESS=root.findViewById(R.id.BankAddress);
+        CONTACT_NO=root.findViewById(R.id.BankContact);
+        bankDetails=(ConstraintLayout) root.findViewById(R.id.details_bank);
+        //CITY=root.findViewById(R.id.city);
+        RTGS=root.findViewById(R.id.RTGS);
+        // DISTRICT=root.findViewById(R.id.district);
+        // STATE=root.findViewById(R.id.state);
 
-
+        bankDetails.setVisibility(View.INVISIBLE);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -99,6 +105,11 @@ public class HomeFragment extends Fragment {
                             Boolean Rtgs=response.getBoolean("RTGS");
                             String District=response.getString("DISTRICT");
                             String State=response.getString("STATE");
+                            if (Contact.equals("")){
+                                Contact="Not Available";
+                            }
+                            Helper.Log("number",Contact);
+                            Helper.Log("address",Address);
                             assignText(Bank,Ifsc,Branch,Address,Contact,City,Rtgs,District,State);
                         }
                         catch (JSONException e)
@@ -120,33 +131,31 @@ public class HomeFragment extends Fragment {
     }
 
     private void assignText(String Bank,String Ifsc,String Branch,String Address,String Contact,String City,Boolean Rtgs,String  District,String State){
+        bankDetails.setVisibility(View.VISIBLE);
         //Bank name
-        BANK_NAME.setText(Bank);
-        BANK_NAME.setVisibility(View.VISIBLE);
+        BANK_NAME.setText("BANK : "+Bank);
         //IFSC code
         IFSC_CODE.setText(Ifsc);
-        IFSC_CODE.setVisibility(View.VISIBLE);
         //Branch name
-        BRANCH_NAME.setText(Branch);
-        BRANCH_NAME.setVisibility(View.VISIBLE);
+        BRANCH_NAME.setText("Branch : "+Branch);
         //Address
-        ADDRESS.setText(Address);
-        ADDRESS.setVisibility(View.VISIBLE);
+        ADDRESS.setText("Address : "+Address);
         //Contact details
-        CONTACT_NO.setText(Contact);
-        CONTACT_NO.setVisibility(View.VISIBLE);
+        CONTACT_NO.setText("Contact : "+Contact);
         //City name
-        CITY.setText(City);
-        CITY.setVisibility(View.VISIBLE);
+//        CITY.setText(City);
        // RTGS availability
-        RTGS.setText(Rtgs.toString());
-        RTGS.setVisibility(View.VISIBLE);
+        if (Rtgs){
+            at="RTGS : Available";
+        }
+        if (!Rtgs){
+            at="RTGS : Not Available";
+        }
+        RTGS.setText(at);
         //District name
-        DISTRICT.setText(District);
-        DISTRICT.setVisibility(View.VISIBLE);
+//        DISTRICT.setText(District);
         //State name
-        STATE.setText(State);
-        STATE.setVisibility(View.VISIBLE);
+//        STATE.setText(State);
 
     }
 
